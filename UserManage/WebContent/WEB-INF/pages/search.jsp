@@ -23,7 +23,7 @@
 </head>
 <body>
     <p>欢迎!!</p>
-    <a href="/UserManage/add">添加学生</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/UserManage/all">主页</a> 
+    <a href="/UserManage/add">添加学生</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/UserManage/page">主页</a> 
     <br>  <br> 
      
     <form action="/UserManage/search" method="post"> 

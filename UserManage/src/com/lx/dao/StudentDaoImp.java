@@ -14,7 +14,7 @@ import com.lx.entity.Page;
 import com.lx.entity.Student;
 
 public class StudentDaoImp implements StudentDao {
-	@Autowired
+
      private  SessionFactory sessionfactory;
      
 	public void setSessionfactory(SessionFactory sessionfactory) {
@@ -27,12 +27,12 @@ public class StudentDaoImp implements StudentDao {
 	}
 
 	@Override
-	public Student findById(String sno) {
+	public Student findById(int sno) {
 		Student student2 =null;
 	    Session session=sessionfactory.getCurrentSession();
 	    //HQL语句from后面跟的是实体名
 	    Query query = session.createQuery("from Student where sno= ?");
-	    student2= (Student) query.setInteger(0, Integer.parseInt(sno)).uniqueResult();
+	    student2= (Student) query.setInteger(0, sno).uniqueResult();
 		return student2;
 	}
 
@@ -63,13 +63,13 @@ public class StudentDaoImp implements StudentDao {
 	@Override
 	public List<Student> search(String sname) {
 	    Query query = sessionfactory.getCurrentSession().createQuery("from Student where sname like ?");
-	    query.setString(0, sname+"%");
+	    query.setString(0, "%"+sname+"%");
 	    List<Student> students=query.list();
 	    return students;
 	}
 
 	@Override
-	public List<Student> findByPage(int begin,int pageSize) {
+	public List<Student> findPageList(int begin,int pageSize) {
 		Query query= sessionfactory.getCurrentSession().createQuery("from Student");
 		query.setFirstResult(begin);
 		query.setMaxResults(pageSize);

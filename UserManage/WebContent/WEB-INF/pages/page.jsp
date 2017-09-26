@@ -23,7 +23,7 @@
 </head>
 <body>
     <p>欢迎!!</p>
-    <a href="/UserManage/add">添加学生</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/UserManage/all">主页</a> 
+    <a href="/UserManage/add">添加学生</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/UserManage/page">主页</a> 
     <br>  <br> 
      
     <form action="/UserManage/search" method="post"> 
@@ -56,6 +56,8 @@
      <span>&nbsp;当前第${page.currentPage }页</span>   
      
      <span>&nbsp;共${page.pageCount }页</span> 
+     
+      <span>&nbsp;共${page.count }条记录</span> 
    
 </body>
 </html>

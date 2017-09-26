@@ -9,7 +9,7 @@ public interface StudentService {
 	
 	  public void add(Student student);
 	  public void del(String sno);  
-	  public Student findById(String  sno);
+	  public Student findById(int sno);
 	  public List<Student> getAll();
 	  public void update(Student student);
 	  public List<Student> search(String sname);

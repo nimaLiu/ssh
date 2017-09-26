@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.lx.dao.StudentDao;
@@ -11,9 +12,9 @@ import com.lx.entity.Page;
 import com.lx.entity.Student;
 
 @Transactional
-
+//@Service("stu") 相当于在applicationContext.xml注册了一个<bean id="stu" class=""/>
 public class StudentServiceImp implements StudentService {
-	
+	@Autowired
      private StudentDao studentdao;
 	public void setStudentdao(StudentDao studentdao) {
 		this.studentdao = studentdao;
@@ -23,7 +24,7 @@ public class StudentServiceImp implements StudentService {
 		studentdao.add(student);
 	}
 	@Override
-	public Student findById(String sno) {
+	public Student findById(int sno) {
 		return studentdao.findById(sno);
 	}
 	@Override
@@ -53,7 +54,7 @@ public class StudentServiceImp implements StudentService {
 		page.setPageSize(3); //设置每页多少条
 		page.setCount(studentdao.findCount());//总条数
 		int begin=(currentPage-1)*page.getPageSize();
-		page.setList(studentdao.findByPage(begin, page.getPageSize()));//每页的数据
+		page.setList(studentdao.findPageList(begin, page.getPageSize()));//每页的数据
 		//总页数
 		int pageNum=(int) Math.ceil((double)page.getCount()/page.getPageSize());
 		page.setPageCount(pageNum);

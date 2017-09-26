@@ -9,13 +9,13 @@ public interface StudentDao {
 	
       public void add(Student student);
       public void del(String sno);
-      public Student findById(String sno);
+      public Student findById(int sno);
       public List<Student> getAll();
       public void update(Student student);
       public List<Student> search(String sname);
       
       //获得每一页的记录
-      public List<Student> findByPage(int begin,int pageSize);
+      public List<Student> findPageList(int begin,int pageSize);
       //获得总记录数
       public  int findCount();
 }

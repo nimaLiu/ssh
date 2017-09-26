@@ -15,7 +15,7 @@
    <tr><td>姓名</td><td><input type="text" name="sname"/></td></tr>
   <tr><td>密码</td><td><input type="password" name="password"/></td></tr>
    <tr><td>专业</td><td><input type="text" name="major"/></td></tr>
-  <tr><td><input type="submit" value="添加"/></td></td><td>&nbsp;&nbsp;<a href="/UserManage/all">返回</a></td></tr>
+  <tr><td><input type="submit" value="添加"/></td></td><td>&nbsp;&nbsp;<a href="/UserManage/page">返回</a></td></tr>
   </form>
 </table>
 

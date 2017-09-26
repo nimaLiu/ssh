@@ -68,7 +68,8 @@
 	</bean>
     
     <bean id="studentService" class="com.lx.service.StudentServiceImp">
-	  <property name="studentdao" ref="studentDao"></property>
+	  <!-- <property name="studentdao" ref="studentDao"></property> -->
+	  <!-- 通过在serviceimpl类的注解@AutoWired来装配studentdao -->
 	</bean>
 	 
     </beans>

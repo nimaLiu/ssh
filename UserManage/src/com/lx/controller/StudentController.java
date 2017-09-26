@@ -17,30 +17,26 @@ import com.lx.service.StudentService;
 public class StudentController {
 	 @Resource(name="studentService")
     private  StudentService StudentService;
-	
-	@RequestMapping("/all")
-	public String getAll(Model model){
-		return "redirect:/page?currentPage=1";
-	}
-	
+
+	 //分页显示
 	@RequestMapping("/page")
-    public String doPage(String currentPage,Model model){
-	 Page page=StudentService.findByPage(Integer.parseInt(currentPage));
+	//参数默认值设置为1
+    public String doPage(@RequestParam(defaultValue="1")int currentPage,Model model){
+	 Page page=StudentService.findByPage(currentPage);
 		model.addAttribute("page", page);
 		return "page";
 	}
     
 	@RequestMapping("/login")
     public String doIndex(){
-		
-	   return "login";
+		 return "login";
 	}
 	
 	@RequestMapping("/doLogin")
-    public String doLogin(String sno,String password,Model model){
+    public String doLogin(int sno,String password,Model model){
 	  Student student2= StudentService.findById(sno);
 	  if (student2!=null&&student2.getPassword().equals(password)) {
-		 return "redirect:/all";
+		 return "redirect:/page";
 	}else{
 		model.addAttribute("tip", "用户名或者密码错误！！");
 		return "login";
@@ -70,18 +66,18 @@ public class StudentController {
 	@RequestMapping("/doAdd")
     public String doAdd(Student student){
 	StudentService.add(student);
-	return "redirect:/all";
+	return "redirect:/page";
 	
 	}
 	
 	@RequestMapping("/del")
 	public String del( @RequestParam("sno") String sno){
 		StudentService.del(sno);
-		return "redirect:/all";
+		return "redirect:/page";
 	}
 	
 	@RequestMapping("/edit")
-	public String editPage(String sno,Model model){
+	public String editPage(int sno,Model model){
 		Student stu=StudentService.findById(sno);
 		model.addAttribute("stu", stu);
 		return "edit";
@@ -90,7 +86,7 @@ public class StudentController {
 	@RequestMapping("/doEdit")
     public String doEdit(Student student){
 	StudentService.update(student);
-	return "redirect:/all";
+	return "redirect:/page";
 	
 	}
 	
